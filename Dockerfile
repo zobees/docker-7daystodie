@@ -19,6 +19,6 @@ WORKDIR /opt/7daystodie
 ADD server.sh /opt/7daystodie/server.sh
 
 VOLUME /data
-EXPOSE 26900
+EXPOSE 26900-26902 26900-26902/udp
 
 CMD cd /opt/7daystodie && exec ./server.sh

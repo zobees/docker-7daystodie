@@ -1,5 +1,5 @@
 NAME=zobees/7daystodie
-VERSION=0.0.3
+VERSION=0.0.4
 
 .PHONY: all build tag_latest release
 

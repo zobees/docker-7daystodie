@@ -26,6 +26,7 @@ A full example is available [here on GitHub](https://github.com/zobees/docker-7d
 
 ## Changelog
 
+ * **0.0.4** Expose the recommended port range (26900-26902)
  * **0.0.3** Ensure server is shut down gracefully (saveworld and shutdown)
  * **0.0.2** Using updated zobees/steamcmd-ubuntu image
  * **0.0.1** Initial release
