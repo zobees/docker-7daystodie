@@ -8,27 +8,21 @@ An abstract docker container for 7 Days to Die.
 
 The 7 Days to Die dedicated server is not available via anonymous login and therefore needs to be authenticated with your Steam username and password prior to installation.
 
-This means you cannot simply pull and run this container, and you should **never push your built image to a public registry**.  Instead, use one of the following methods to keep your credentials safe:
+This means you cannot simply pull and run this container, and you should **never push your image to a public registry**.  Instead you should build the image on your docker host directly or store your image in a private **secured and authenticated** registry.
 
-### Build on your server
+### Usage
 
-The `Dockerfile` contains an `ONBUILD` instruction to download and install the 7 Days to Die dedicated server via `steamcmd`, using the credentials supplied via `credentials.txt`, which you place in the current working directory of your docker build command.
+The `Dockerfile` contains an `ONBUILD` instruction to download and install the 7 Days to Die dedicated server via `steamcmd`, using the credentials you supply via a `credentials.txt` in the current working directory when you build your image.
 
 The `credentials.txt` should contain a single line:
 
     login <mysteamuser> <mysteampass>
 
-When you run your docker build command, `steamcmd` will authenticate prior to downloading the 7 Days to Die dedicated server, and all will be well.
+The `credentials.txt` will be removed from the image during the build, however Steam will still be authenticated using _your_ credentials.  So again, **do not push your image to a public registry.**
 
-The `credentials.txt` will be removed from the image during the build, however Steam will still be authenticated using your credentials - so again, **do not push your built image to a public registry.**
+### Example
 
-### Store in a private registry
-
-Rather than building the image on your server each time you create or update a container, you could build as per the instructions above and then store the image in your own private registry, keeping your credentials secure.
-
-Instructions on creating and using a private registry are available in the Docker documentation.
-
-**Do not push your built image to a public registry.**
+A full example is available [here on GitHub](https://github.com/zobees/docker-7daystodie-example).
 
 ## Known issues
 
