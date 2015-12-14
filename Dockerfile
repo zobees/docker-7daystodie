@@ -2,6 +2,8 @@ FROM zobees/steamcmd-ubuntu:0.0.2
 MAINTAINER cliffrowley@gmail.com
 
 USER root
+RUN apt-get install -y telnet
+
 RUN mkdir -p /opt/7daystodie && chown daemon:daemon /opt/7daystodie
 
 USER daemon
@@ -19,4 +21,4 @@ ADD server.sh /opt/7daystodie/server.sh
 VOLUME /data
 EXPOSE 26900
 
-CMD cd /opt/7daystodie && ./server.sh
+CMD cd /opt/7daystodie && exec ./server.sh
