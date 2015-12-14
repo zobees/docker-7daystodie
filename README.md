@@ -1,4 +1,4 @@
-# Docker | 7 Days to Die
+# [zobees/docker-7daystodie](https://hub.docker.com/r/zobees/7daystodie/)
 
 An abstract docker container for 7 Days to Die.
 
@@ -12,7 +12,7 @@ This means you cannot simply pull and run this container, and you should **never
 
 ### Build on your server
 
-The `Dockerfile` contains an `ONBUILD` instruction to download and install the 7 Days to Die dedicated server via `steamcmd`, using the credentials supplied via `credentials.txt` you place in the current working directory of your docker build command.
+The `Dockerfile` contains an `ONBUILD` instruction to download and install the 7 Days to Die dedicated server via `steamcmd`, using the credentials supplied via `credentials.txt`, which you place in the current working directory of your docker build command.
 
 The `credentials.txt` should contain a single line:
 
@@ -20,13 +20,15 @@ The `credentials.txt` should contain a single line:
 
 When you run your docker build command, `steamcmd` will authenticate prior to downloading the 7 Days to Die dedicated server, and all will be well.
 
-**This bears repeating: do not push your image to a public registry**.
+The `credentials.txt` will be removed from the image during the build, however Steam will still be authenticated using your credentials - so again, **do not push your built image to a public registry.**
 
 ### Store in a private registry
 
 Rather than building the image on your server each time you create or update a container, you could build as per the instructions above and then store the image in your own private registry, keeping your credentials secure.
 
 Instructions on creating and using a private registry are available in the Docker documentation.
+
+**Do not push your built image to a public registry.**
 
 ## Disclaimer
 
