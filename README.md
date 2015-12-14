@@ -30,6 +30,10 @@ Instructions on creating and using a private registry are available in the Docke
 
 **Do not push your built image to a public registry.**
 
+## Known issues
+
+ * Using `steam` user causes pain dealing with permissions in the data volume.  This is also an issue in its parent image [zobees/steamcmd-ubuntu](https://hub.docker.com/r/zobees/steamcmd-ubuntu/), which I will fix in the next release.
+
 ## Disclaimer
 
 These containers are designed to be used by Zobees to host game servers for friends and family, and therefore may not suit all use cases.  That said, we are all for flexibility and would welcome pull requests and issues.
