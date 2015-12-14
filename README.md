@@ -24,9 +24,10 @@ The `credentials.txt` will be removed from the image during the build, however S
 
 A full example is available [here on GitHub](https://github.com/zobees/docker-7daystodie-example).
 
-## Known issues
+## Changelog
 
- * Using `steam` user causes pain dealing with permissions in the data volume.  This is also an issue in its parent image [zobees/steamcmd-ubuntu](https://hub.docker.com/r/zobees/steamcmd-ubuntu/), which I will fix in the next release.
+ * **0.0.2** Using updated zobees/steamcmd-ubuntu image
+ * **0.0.1** Initial release
 
 ## Disclaimer
 
