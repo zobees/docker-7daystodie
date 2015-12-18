@@ -1,24 +1,20 @@
-FROM zobees/steamcmd-ubuntu:0.0.2
+FROM zobees/steamcmd:0.0.1
 MAINTAINER cliffrowley@gmail.com
 
 USER root
-RUN apt-get install -y telnet
 
-RUN mkdir -p /opt/7daystodie && chown daemon:daemon /opt/7daystodie
+RUN DEBIAN_FRONTEND=noninteractive \
+  apt-get install -q -y --no-install-recommends \
+  telnet
 
-USER daemon
-WORKDIR /opt/steam/steamcmd
+USER steam
 
-ADD install.txt /opt/steam/steamcmd/install.txt
+ADD steam/bin/server.sh /home/steam/bin/server.sh
 
-ONBUILD WORKDIR /opt/steam/steamcmd
-ONBUILD ADD credentials.txt /opt/steam/steamcmd/credentials.txt
-ONBUILD RUN ./install.sh && rm -rf /opt/steam/steamcmd/credentials.txt
+ENV STEAM_APP_ID=294420 \
+    STEAM_APP_CMD="/home/steam/bin/server.sh" \
+    SDTD_CMD="/home/steam/app/7DaysToDieServer.x86_64" \
+    SDTD_CONFIG_FILE="/home/steam/app/serverconfig.xml" \
+    SDTD_TELNET_PORT=8081
 
-WORKDIR /opt/7daystodie
-ADD server.sh /opt/7daystodie/server.sh
-
-VOLUME /data
 EXPOSE 26900-26902 26900-26902/udp
-
-CMD cd /opt/7daystodie && exec ./server.sh

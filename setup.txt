@@ -1,0 +1,2 @@
+force_install_dir /games/7daystodie
+app_update 294420

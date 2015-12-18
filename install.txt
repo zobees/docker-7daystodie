@@ -1,2 +1,0 @@
-force_install_dir /opt/7daystodie
-app_update 294420
