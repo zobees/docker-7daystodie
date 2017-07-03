@@ -12,7 +12,6 @@ ENV STEAM_APP_ID="294420" \
 COPY files/server.sh /server.sh
 
 RUN mkdir -p $SDTD_DIR && \
-    chown -R steam:steam $SDTD_DIR && \
     chmod 755 /server.sh
 
 WORKDIR $SDTD_DIR
