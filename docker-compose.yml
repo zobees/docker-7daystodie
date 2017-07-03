@@ -5,3 +5,5 @@ services:
     image: zobees/7daystodie
     volumes:
       - ./tmp:/7daystodie
+    environment:
+      STEAMCMD_APP_BETA: latest_experimental
