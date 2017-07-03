@@ -1,4 +1,4 @@
-FROM zobees/steamcmd:0.0.1
+FROM zobees/gse-steamcmd
 MAINTAINER cliffrowley@gmail.com
 
 USER root
@@ -7,14 +7,18 @@ RUN DEBIAN_FRONTEND=noninteractive \
   apt-get install -q -y --no-install-recommends \
   telnet
 
+ENV STEAM_APP_ID="294420" \
+    STEAM_APP_ANONYMOUS="1" \
+    SDTD_DIR="/7daystodie" \
+    SDTD_CONFIG="/7daystodie/serverconfig.xml" \
+    SDTD_TELNET_PORT="8081"
+
+RUN mkdir -p $SDTD_DIR
+COPY files/server.sh /server.sh
+RUN chown -R steam:steam $SDTD_DIR
+
 USER steam
 
-ADD steam/bin/server.sh /home/steam/bin/server.sh
+CMD /server.sh
 
-ENV STEAM_APP_ID=294420 \
-    STEAM_APP_CMD="/home/steam/bin/server.sh" \
-    SDTD_CMD="/home/steam/app/7DaysToDieServer.x86_64" \
-    SDTD_CONFIG_FILE="/home/steam/app/serverconfig.xml" \
-    SDTD_TELNET_PORT=8081
-
-EXPOSE 26900-26902 26900-26902/udp
+VOLUME $SDTD_DIR
