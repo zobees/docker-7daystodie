@@ -18,6 +18,10 @@ There are a bunch of ways you could use this image, but my current method is to 
 
 **Optional.**  The telnet port of the 7 days to die server.  Set this in your config if you want the server to be shut down gracefully with a `saveworld` and `shutdown` when you stop the container.  The default is `8081`.
 
+### STEAM_APP_BETA
+
+**Optional.**  The beta version to install if desired, e.g. `latest_experimental`.
+
 ## Disclaimer
 
 These containers are designed to be used by Zobees to host game servers for friends and family, and therefore may not suit all use cases.  That said, we are all for flexibility and would welcome pull requests and issues.
