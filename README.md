@@ -14,10 +14,6 @@ There are a bunch of ways you could use this image, but my current method is to 
 
 **Optional.**  The path to your server configuration file.  Optional yes, but an entirely default server probably isn't that much fun in the long run.
 
-### SDTD_TELNET_PORT
-
-**Optional.**  The telnet port of the 7 days to die server.  Set this in your config if you want the server to be shut down gracefully with a `saveworld` and `shutdown` when you stop the container.  The default is `8081`.
-
 ### STEAM_APP_BETA
 
 **Optional.**  The beta version to install if desired, e.g. `latest_experimental`.
