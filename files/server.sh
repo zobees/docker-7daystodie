@@ -13,12 +13,14 @@ if [ -n "STEAMCMD_APP_BETA" ]; then
   BETA="-beta $STEAM_APP_BETA"
 fi
 
-steamcmd.sh +login anonymous \
+chown -R steam:steam /7daystodie
+
+gosu steam steamcmd.sh +login anonymous \
   +force_install_dir $SDTD_DIR \
   +app_update $STEAM_APP_ID $BETA validate \
   +quit
 
-$SDTD_DIR/7DaysToDieServer.x86_64 \
+gosu steam $SDTD_DIR/7DaysToDieServer.x86_64 \
   -logfile /dev/stdout \
   -configfile=$SDTD_CONFIG \
   -quit \

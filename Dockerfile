@@ -3,8 +3,8 @@ MAINTAINER cliffrowley@gmail.com
 
 USER root
 
-RUN DEBIAN_FRONTEND=noninteractive \
-  apt-get install -q -y --no-install-recommends \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   telnet
 
 ENV STEAM_APP_ID="294420" \
@@ -14,10 +14,8 @@ ENV STEAM_APP_ID="294420" \
     SDTD_TELNET_PORT="8081"
 
 RUN mkdir -p $SDTD_DIR
-COPY files/server.sh /server.sh
 RUN chown -R steam:steam $SDTD_DIR
-
-USER steam
+COPY files/server.sh /server.sh
 
 CMD /server.sh
 
