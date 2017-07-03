@@ -1,4 +1,4 @@
-FROM zobees/gse-steamcmd
+FROM zobees/steamcmd
 MAINTAINER cliffrowley@gmail.com
 
 USER root
