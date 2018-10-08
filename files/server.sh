@@ -6,6 +6,6 @@ if [ -n "STEAMCMD_APP_BETA" ]; then
   BETA="-beta $STEAMCMD_APP_BETA"
 fi
 
-steamcmd.sh +login anonymous +force_install_dir $SDTD_DIR +app_update $STEAM_APP_ID $BETA +quit
+steamcmd.sh +login anonymous +force_install_dir Path:$SDTD_DIR +app_update $STEAM_APP_ID $BETA +quit
 
 $SDTD_DIR/7DaysToDieServer.x86_64 -logfile /dev/stdout -configfile=$SDTD_CONFIG -quit -batchmode -nographics -dedicated
