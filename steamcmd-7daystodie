@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -e
+
+_term() {
+  echo "Attempting graceful shutdown.."
+  steamcmd-7daystodie-shutdown
+}
+
+trap _term SIGTERM
+
+config_file=${CONFIG_FILE:-serverconfig.xml}
+
+./7DaysToDieServer.x86_64 \
+  -logfile /dev/stdout \
+  -configfile=$config_file \
+  -quit \
+  -batchmode \
+  -nographics \
+  -dedicated &
+
+child=$!
+wait "$child"

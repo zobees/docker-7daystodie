@@ -1,9 +1,12 @@
 version: "3.3"
 services:
-  server:
+  image:
     build: .
     image: zobees/7daystodie
-    volumes:
-      - ./tmp:/7daystodie
     environment:
-      STEAMCMD_APP_BETA: latest_experimental
+      STEAMCMD_SKIP_UPDATE: "true"
+    ports:
+      - "26900-26902:26900-26902"
+      - "26900-26902:26900-26902/udp"
+    volumes:
+      - ./data:/data

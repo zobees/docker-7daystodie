@@ -1,21 +1,18 @@
 FROM zobees/steamcmd
-MAINTAINER cliffrowley@gmail.com
 
-USER root
+RUN apt-get -y update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -q -y --no-install-recommends netcat && \
+    rm -rf /var/lib/apt/lists/*
 
-ENV STEAM_APP_ID="294420" \
-    STEAM_APP_ANONYMOUS="1" \
-    SDTD_DIR="/7daystodie" \
-    SDTD_CONFIG="serverconfig.xml" \
-    SDTD_TELNET_PORT="8081"
+ENV STEAMCMD_APP_ID="294420"
 
-COPY files/server.sh /server.sh
+ADD steamcmd-7daystodie /usr/local/bin/steamcmd-7daystodie
+ADD steamcmd-7daystodie-rcon /usr/local/bin/steamcmd-7daystodie-rcon
+ADD steamcmd-7daystodie-shutdown /usr/local/bin/steamcmd-7daystodie-shutdown
+ADD steamcmd-7daystodie-status /usr/local/bin/steamcmd-7daystodie-status
 
-RUN mkdir -p $SDTD_DIR && \
-    chmod 755 /server.sh
+LABEL maintainer cliffrowley@gmail.com
 
-WORKDIR $SDTD_DIR
+HEALTHCHECK CMD [ "steamcmd-7daystodie-status" ]
 
-VOLUME $SDTD_DIR
-
-CMD /server.sh
+CMD ["steamcmd-run", "steamcmd-7daystodie"]

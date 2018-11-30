@@ -1,22 +1,37 @@
-# 7daystodie
+# zobees/7daystodie
 
-An abstract docker container for 7 Days to Die.
+A generic docker image for the 7 Days to Die dedicated server.
 
-**Please be aware of breaking changes and potential issues until a 1.x release.**
+## Usage
 
-## Overview
+``` sh
+docker run -d -v $PWD/data:/data \
+  -p 26900-26902:26900-26902 \
+  -p 26900-26902:26900-26902/udp \
+  zobees/7daystodie
+```
 
-There are a bunch of ways you could use this image, but my current method is to mount a volume on which to store the game, and another on which to store the world data.  It's horses for courses though really, so I can't recommend a particular configuration for your requirements.  There should be enough flexibility for most use cases, though.
+## Advanced
 
-## Environment variables
+#### Configuration file
 
-### SDTD_CONFIG_FILE
+Specify an alternate configuration file via `CONFIG_FILE` (default: serverconfig.xml).
 
-**Optional.**  The path to your server configuration file.  Optional yes, but an entirely default server probably isn't that much fun in the long run.
+#### Other options
 
-### STEAM_APP_BETA
+See the source code for this and its base images for more information:
 
-**Optional.**  The beta version to install if desired, e.g. `latest_experimental`.
+ * [zobees/7daystodie](https://github.com/zobees/docker-7daystodie)
+ * [zobees/steamcmd](https://github.com/zobees/docker-steamcmd)
+ * [zobees/steamcmd-base](https://github.com/zobees/docker-steamcmd-base)
+
+## Changes
+
+### 0.2.1
+
+ * Switched to updated zobees/steamcmd image.
+ * Added health check.
+ * Added graceful shutdown.
 
 ## Disclaimer
 
