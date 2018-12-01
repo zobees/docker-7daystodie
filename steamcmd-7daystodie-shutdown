@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 shutdown() {
   steamcmd-7daystodie-rcon <<EOS
