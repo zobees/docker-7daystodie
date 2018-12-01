@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
-set -e
+shutdown() {
+  steamcmd-7daystodie-rcon <<EOS
+    shutdown
+    exit
+EOS
+}
 
-echo shutdown | steamcmd-7daystodie-rcon
+while true; do
+  echo "Sending shutdown command.."
+  shutdown && break
+  echo "Trying again in 2 seconds.."
+  sleep 2
+done

@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-set -e
-
-nc -q 1 -C 127.0.0.1 8081
+exec nc -i 1 -q 1 -C 127.0.0.1 8081

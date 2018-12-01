@@ -27,6 +27,12 @@ See the source code for this and its base images for more information:
 
 ## Changes
 
+### 0.2.2
+
+ * Improved health check.
+ * Improved graceful shutdown.
+ * Swapped out telnet for netcat.
+
 ### 0.2.1
 
  * Switched to updated zobees/steamcmd image.
