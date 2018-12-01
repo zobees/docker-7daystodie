@@ -25,6 +25,10 @@ See the source code for this and its base images for more information:
  * [zobees/steamcmd](https://github.com/zobees/docker-steamcmd)
  * [zobees/steamcmd-base](https://github.com/zobees/docker-steamcmd-base)
 
+## Known issues
+
+ * Wrong server port is displayed in game's server list if non-standard. This is because the server list port is determined by the value the a2s query response and not the port the server is _actually_ running on. A fix for this will be incoming, but for now you can use `STEAMCMD_QUERY_PORT`.
+
 ## Changes
 
 ### 0.2.2
