@@ -2,6 +2,13 @@
 
 A generic docker image for the 7 Days to Die dedicated server.
 
+## Features
+
+ * Installs or updates the server on startup.
+ * Drops privileges to a configurable UID and GID.
+ * Handles graceful shutdown via the server telnet console.
+ * Includes a Docker healthcheck.
+
 ## Usage
 
 ``` sh
@@ -11,37 +18,24 @@ docker run -d -v $PWD/data:/data \
   zobees/7daystodie
 ```
 
-## Advanced
-
-#### Configuration file
+## Configuration
 
 Specify an alternate configuration file via `CONFIG_FILE` (default: serverconfig.xml).
 
-#### Other options
+## Other options
 
-See the source code for this and its base images for more information:
+See the source code for this and its base image for more information:
 
  * [zobees/7daystodie](https://github.com/zobees/docker-7daystodie)
  * [zobees/steamcmd](https://github.com/zobees/docker-steamcmd)
- * [zobees/steamcmd-base](https://github.com/zobees/docker-steamcmd-base)
 
 ## Known issues
 
- * Wrong server port is displayed in game's server list if non-standard. This is because the server list port is determined by the value the a2s query response and not the port the server is _actually_ running on. A fix for this will be incoming, but for now you can use `STEAMCMD_QUERY_PORT`.
+ * The wrong server port is displayed in game's server list if non-standard. This is because the server list port is determined by the value the a2s query response and not the port the server is _actually_ running on. A fix for this will be incoming, but for now you can use `QUERY_PORT`.
 
-## Changes
+ * The server seems to stop logging to stdout shortly after running when privileges are dropped.
 
-### 0.2.2
-
- * Improved health check.
- * Improved graceful shutdown.
- * Swapped out telnet for netcat.
-
-### 0.2.1
-
- * Switched to updated zobees/steamcmd image.
- * Added health check.
- * Added graceful shutdown.
+ * The server can take long enough to start up that the health check reports an unhealthy status.
 
 ## Disclaimer
 

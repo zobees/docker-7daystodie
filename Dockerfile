@@ -5,15 +5,15 @@ RUN apt-get -y update && \
       netcat qstat && \
     rm -rf /var/lib/apt/lists/*
 
-ENV STEAMCMD_APP_ID="294420"
+ENV STEAMCMD_APP_ID="294420" \
+    CONFIG_FILE=serverconfig.xml \
+    QUERY_PORT=26901
 
-ADD steamcmd-* /usr/local/bin/
-RUN chmod +x /usr/local/bin/steamcmd-*
-
-ENV CONFIG_FILE=serverconfig.xml
+ADD 7dtd-* /usr/local/bin/
+RUN chmod +x /usr/local/bin/7dtd-*
 
 LABEL maintainer cliffrowley@gmail.com
 
-HEALTHCHECK CMD [ "steamcmd-7daystodie-status" ]
+HEALTHCHECK CMD [ "7dtd-status" ]
 
-CMD ["steamcmd-run", "steamcmd-7daystodie"]
+CMD ["steamcmd-wrapper", "7dtd-server"]

@@ -6,9 +6,9 @@ services:
     tty: true
     stdin_open: true
     environment:
-      STEAMCMD_SKIP_UPDATE: "true"
-      SET_UID: "1001"
-      SET_GID: "1001"
+      STEAMCMD_SKIP: "true"
+      USER_UID: "1001"
+      USER_GID: "1001"
     ports:
       - "26900-26902:26900-26902"
       - "26900-26902:26900-26902/udp"

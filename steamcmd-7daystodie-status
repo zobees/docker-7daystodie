@@ -1,9 +1,0 @@
-#!/bin/bash
-
-query_port=${STEAMCMD_QUERY_PORT:-26901}
-if [ -z "$(quakestat -nh -u -a2s 127.0.0.1:$query_port)" ]; then
-  echo "DOWN"
-  exit 1
-fi
-
-echo "UP"

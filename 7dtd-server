@@ -1,7 +1,7 @@
 #!/bin/bash
 
 _term() {
-  steamcmd-7daystodie-shutdown
+  7dtd-shutdown
 }
 
 trap _term SIGTERM

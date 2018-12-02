@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ -z "$(quakestat -nh -u -a2s 127.0.0.1:$QUERY_PORT)" ] && exit 1
+exit 0
