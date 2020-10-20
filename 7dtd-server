@@ -7,7 +7,6 @@ _term() {
 trap _term SIGTERM
 
 ./7DaysToDieServer.x86_64 \
-  -logfile /dev/stdout \
   -configfile=$CONFIG_FILE \
   -quit \
   -batchmode \
